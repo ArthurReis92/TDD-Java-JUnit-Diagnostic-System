@@ -40,4 +40,21 @@ public class TestDiagnostico {
 		pd.setGlicose(130);
 		assertEquals("Diabetes", Diagnostico.verificaGlicose(pd));
 	}
+	
+	@Test
+	public void testVerificaOxigenacaoBaixa() {
+		pd.setSaturacao(82);
+		assertEquals("Saturação baixa - hipóxia", Diagnostico.verificaOxigenacao(pd));
+	}
+	
+	@Test
+	public void testVerificaOxigenacaoAlerta() {
+		pd.setSaturacao(92);
+		assertEquals("Saturação em alerta, verificar se o paciente apresenta sintomas de gripe ou resfriado", Diagnostico.verificaOxigenacao(pd));
+	}
+	
+	@Test
+	public void testVerificaOxigenacaoNormal() {
+		assertEquals("Saturação normal", Diagnostico.verificaOxigenacao(pd));
+	}
 }
